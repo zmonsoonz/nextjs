@@ -1,5 +1,6 @@
 "use client"
 import Link from "next/link";
+import styles from "./Posts.module.scss";
 interface Post {
     id: number,
     title:string,
@@ -18,10 +19,10 @@ const Posts = async () =>  {
     const posts = await getData();
 
     return (
-      <main>
+      <main className={styles.main}>
           {posts.map(({id, title, body}:Post) => {
             return (
-                <Link key={id} className="post" href={`/posts/${id}`}>
+                <Link key={id} className={styles.post} href={`/posts/${id}`}>
                     <h2>{title}</h2>
                     <h5>{body}</h5>
                 </Link>
